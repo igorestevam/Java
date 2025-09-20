@@ -20,10 +20,10 @@ public class Banco {
         listaContas.add(c);
     }
     
-    public void removeContaNome(String nome){
+    public void removeConta(String num){
         boolean achou = false;
         for (Conta c : listaContas) {
-            if(c.getNome().equalsIgnoreCase(nome)){
+            if(c.getNum().equalsIgnoreCase(num)){
                 listaContas.remove(c);
                 System.out.println("Conta removida!");
                 achou = true;
@@ -33,14 +33,14 @@ public class Banco {
             }
         }
         if(achou){
-            System.out.println("Nome não encontrado ou inexistente.");
+            System.out.println("Número não encontrado ou inexistente.");
         }
     }
     
-    public void consultarContaNome(String nome){
+    public void consultarConta(String num){
         boolean achou = false;
         for (Conta c : listaContas) {
-            if(c.getNome().equalsIgnoreCase(nome)){
+            if(c.getNum().equalsIgnoreCase(num)){
                 System.out.println("Conta encontrada: ");
                 System.out.println("Nome: "+c.getNome());
                 System.out.println("Número da conta: "+c.getNum());
@@ -53,15 +53,45 @@ public class Banco {
             }
         }
         if(achou){
-            System.out.println("Nome não encontrado ou inexistente.");
+            System.out.println("Número não encontrado ou inexistente.");
         }
     }
     
-    public void transacaoContas(Conta c1, float valor, Conta c2){
-        c1.sacar(valor);
-        c2.depositar(valor);
-        System.out.printf("Saldo do "+c1.getNome()+": R$%.2f\n",c1.getSaldo());
-        System.out.printf("Saldo do "+c2.getNome()+": R$%.2f\n",c2.getSaldo());
+    public void transacaoContas(String num1, String num2, float valor){
+        boolean achou1 = false;
+        boolean achou2 = false;
+        Conta c1 = null;
+        Conta c2 = null;
+        for (Conta c : listaContas) {
+            if(c.getNum().equalsIgnoreCase(num1)){
+                achou1 = true;
+                c1 = c;
+                break;
+            }else{
+                break;
+            }
+        }
+        if(achou1){
+            System.out.println("Número da primeira conta não encontrado ou inexistente.");
+        }
+        for(Conta c: listaContas){
+            if(c.getNum().equalsIgnoreCase(num2)){
+                achou2 = true;
+                c2 = c;
+                break;
+            }else{
+                break;
+            }
+        }
+        if(achou2){
+            System.out.println("Número da segunda conta não encontrado ou inexistente.");
+        }
+        if(achou1 == true && achou2 == true){
+            c1.sacar(valor);
+            c2.depositar(valor);
+            System.out.printf("Saldo do "+c1.getNome()+": R$%.2f\n",c1.getSaldo());
+            System.out.printf("Saldo do "+c2.getNome()+": R$%.2f\n",c2.getSaldo());
+        }
     }
     
     public void depConta(String num, float valor){
