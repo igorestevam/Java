@@ -26,15 +26,16 @@ public class main {
         System.out.println("Qualquer outro número: Fechar programa.");
                   
             int menu = scanner.nextInt();
+            scanner.nextLine();
             switch(menu){
                 case 1:
                     System.out.println("\nInforme os dados da conta: ");
                     System.out.print("Nome: ");
-                    String nome = scanner.next();
+                    String nome = scanner.nextLine();
                     System.out.print("Número da conta: ");
                     String num = scanner.nextLine();
                     System.out.print("Agência: ");
-                    String agencia = scanner.next();                 
+                    String agencia = scanner.nextLine();                 
                     Conta c = new Conta(nome, num, agencia);
                     b.addConta(c);
                     System.out.println("\nUsuário cadastrado com sucesso!");
@@ -78,4 +79,5 @@ public class main {
         }
     }
 }
+
 
