@@ -8,25 +8,33 @@ package com.mycompany.rpg;
  *
  * @author alunolab10
  */
-import java.util.ArrayList;
 public class Inimigo {
+    private String dif;
     private String nome;
     private int vida;
     private int dano;
-    private float atqPorTurno;
-    private int mana;
     private int recompensa;
+    private int buffVida;
+    private int buffDano;
+    private int buffEnergia;
 
-    public Inimigo(String nome, int vida, int dano, float atqPorTurno, int mana, int recompensa) {
+    public Inimigo(String dif, String nome, int vida, int dano, int recompensa, int buffVida, int buffDano, int buffEnergia) {
+        this.dif = dif;
         this.nome = nome;
         this.vida = vida;
         this.dano = dano;
-        this.atqPorTurno = atqPorTurno;
-        this.mana = mana;
         this.recompensa = recompensa;
+        this.buffVida = buffVida;
+        this.buffDano = buffDano;
+        this.buffEnergia = buffEnergia;
+    }
+
+    
+    
+    public String getDif(){
+        return dif;
     }
     
-
     public String getNome() {
         return nome;
     }
@@ -39,18 +47,9 @@ public class Inimigo {
         return dano;
     }
 
-    public float getAtqPorTurno() {
-        return atqPorTurno;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
     public int getRecompensa() {
         return recompensa;
     }
-    
     
     
 }
