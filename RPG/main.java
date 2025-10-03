@@ -87,7 +87,7 @@ public class main {
                 System.out.println("\nVocê deseja: ");
                 System.out.println("[1] -10 moedas Comer pernil (+15hp e +30energ).");
                 System.out.println("[2] -20 moedas Passar a noite na taberna (recuperação total).");
-                System.out.println("[qualquer outra tecla] Continuar a jornada.");
+                System.out.println("[qualquer outro número] Continuar a jornada.");
                 int opt = scanner.nextInt();
                 scanner.nextLine();
                 r.recuperarJogador(opt, p);
