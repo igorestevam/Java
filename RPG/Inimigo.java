@@ -32,14 +32,14 @@ public class Inimigo {
                 break;
             
             case "medio":
-                this.recompensa = 7;
+                this.recompensa = 10;
                 this.buffVida = 4;
                 this.buffDano = 2;
                 this.buffEnergia = 20;
                 break;
             
             case "dificil":
-                this.recompensa = 12;
+                this.recompensa = 15;
                 this.buffVida = 8;
                 this.buffDano = 5;
                 this.buffEnergia = 30;
