@@ -18,19 +18,42 @@ public class Inimigo {
     private int buffDano;
     private int buffEnergia;
 
-    public Inimigo(String dif, String nome, int vida, int dano, int recompensa, int buffVida, int buffDano, int buffEnergia) {
+    public Inimigo(String dif, String nome, int vida, int dano) {
         this.dif = dif;
         this.nome = nome;
         this.vida = vida;
         this.dano = dano;
-        this.recompensa = recompensa;
-        this.buffVida = buffVida;
-        this.buffDano = buffDano;
-        this.buffEnergia = buffEnergia;
+        switch (dif.toLowerCase()) {
+            case "facil":
+                this.recompensa = 4;
+                this.buffVida = 2;
+                this.buffDano = 1;
+                this.buffEnergia = 10;
+                break;
+            
+            case "medio":
+                this.recompensa = 7;
+                this.buffVida = 4;
+                this.buffDano = 2;
+                this.buffEnergia = 20;
+                break;
+            
+            case "dificil":
+                this.recompensa = 12;
+                this.buffVida = 8;
+                this.buffDano = 5;
+                this.buffEnergia = 30;
+                break;
+                
+            default:
+                this.recompensa = 0;
+                this.buffVida = 0;
+                this.buffDano = 0;
+                this.buffEnergia = 0;
+                break;
+        }
     }
 
-    
-    
     public String getDif(){
         return dif;
     }
@@ -50,6 +73,23 @@ public class Inimigo {
     public int getRecompensa() {
         return recompensa;
     }
+
+    public int getBuffVida() {
+        return buffVida;
+    }
+    
+    public int getBuffDano() {
+        return buffDano;
+    }
+
+    public int getBuffEnergia() {
+        return buffEnergia;
+    }
+    
+    public void setVida(int vida){
+        this.vida = vida;
+    }
+    
     
     
 }
