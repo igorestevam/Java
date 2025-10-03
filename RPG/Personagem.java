@@ -11,38 +11,56 @@ package com.mycompany.rpg;
 public class Personagem {
     private String nome;
     private String classe;
-    private int vida;
+    private int vidaMax;
+    private int vidaAtual;
     private int dano;
-    private int atqPorTurno;
-    private int energia;
+    private int energiaMax;
+    private int energiaAtual;
     private int moeda;
+    private Item arma;
     
-    // Igor Esteve aqui
-    public Personagem(String nivel, String nome, String classe) {
+    //Instanciando itens.
+    Item arco = new Item("Galadhrim", 7);
+    Item espada = new Item("Excalibur", 5);
+    Item adaga = new Item("Sonnet", 4);
+    Item nada = new Item("Punho", 0);
+    
+    public Personagem(String nome, String classe) {
         this.nome = nome;
         this.classe = classe;
         this.moeda = 10;
-        if(classe.equalsIgnoreCase("arqueiro")){
-            this.vida = 30;
-            this.dano = 8;
-            this.atqPorTurno = 2;
-            this.energia = 80;
+        switch (classe.toLowerCase()) {
+            case "arqueiro":
+                this.vidaMax = 30;
+                this.dano = 6;
+                this.energiaMax = 120;
+                this.arma = arco;
+                break;
+
+            case "guerreiro":
+                this.vidaMax = 40;
+                this.dano = 5;
+                this.energiaMax = 100;
+                this.arma = espada;
+                break;
+
+            case "ladino":
+                this.vidaMax = 20;
+                this.dano = 8;
+                this.energiaMax = 100;
+                this.arma = adaga;
+                break;
+
+            default:
+                System.out.println("Erro: escolha uma classe válida.");
+                this.vidaMax = 10;
+                this.dano = 1;
+                this.energiaMax = 50;
+                this.arma = nada;
+                break;
         }
-        if(classe.equalsIgnoreCase("guerreiro")){
-            this.vida = 60;
-            this.dano = 10;
-            this.atqPorTurno = 1;
-            this.energia = 120;
-        }
-        if(classe.equalsIgnoreCase("ladino")){
-            this.vida = 45;
-            this.dano = 15;
-            this.atqPorTurno = 1;
-            this.energia = 100;
-        }else{
-            System.out.println("Erro: escolha uma classe válida.");
-        }
-        
+        this.vidaAtual = vidaMax;
+        this.energiaAtual = energiaMax;
     }
 
     public String getNome() {
@@ -53,24 +71,61 @@ public class Personagem {
         return classe;
     }
 
-    public int getVida() {
-        return vida;
+    public int getVidaMax() {
+        return vidaMax;
     }
     
-    public int dano() {
-        return dano;
+    public int getVidaAtual(){
+        return vidaAtual;
     }
     
-    public int atqPorTurno() {
-        return atqPorTurno;
+    public int getDano() {
+        return dano + getArmaDano();
     }
 
-    public int getEnergia() {
-        return energia;
+    public int getEnergiaMax(){
+        return energiaMax;
+    }
+    
+    public int getEnergiaAtual() {
+        return energiaAtual;
     }
 
     public int getMoeda() {
         return moeda;
     }
 
+    public String getArmaNome() {
+        return arma.getNomeItem();
+    }
+    
+    public int getArmaDano(){
+        return arma.getDanoItem();
+    }
+
+    public void setVidaAtual(int vida) {
+        this.vidaAtual = vida;
+    }
+    
+    public void setEnergiaAtual(int energia){
+        this.energiaAtual = energia;
+    }
+
+    public void setVidaMax(int vidaMax) {
+        this.vidaMax = vidaMax;
+    }
+
+    public void setDano(int dano) {
+        this.dano = dano;
+    }
+
+    public void setEnergiaMax(int energiaMax) {
+        this.energiaMax = energiaMax;
+    }
+
+    public void setMoeda(int moeda) {
+        this.moeda = moeda;
+    }
+    
+    
 }
